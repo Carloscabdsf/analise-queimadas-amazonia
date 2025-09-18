@@ -1,0 +1,20 @@
+# Ambiente Virtual
+/venv/
+/geo_env/
+
+# Cache do Python
+__pycache__/
+
+# Dados Brutos (muito grandes)
+/dados_originais/
+
+# Ignora todo o conteúdo da pasta de resultados...
+dados_processados/*
+# ...EXCETO o arquivo de resumo CSV.
+!dados_processados/resultado_contagem_focos.csv
+
+# Configurações do Editor e QGIS
+.vscode/
+# ignorar arquivos qgis
+*.qgs
+*.qgz
