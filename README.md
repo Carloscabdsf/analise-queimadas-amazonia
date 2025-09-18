@@ -1,7 +1,5 @@
 # Análise Espacial de Focos de Queimadas na Amazônia com Python
 
-**Autor:** Carlos Augusto Belo da Silva Filho
-
 
 ## 📝 Descrição do Projeto
 
