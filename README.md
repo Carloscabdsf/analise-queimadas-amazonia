@@ -7,7 +7,7 @@
 
 Desenvolvi este projeto como parte dos meus estudos em Python para análise de dados, com o objetivo de aplicar na prática a manipulação de dados geoespaciais e transformar dados brutos em uma visualização de impacto.
 
-O script automatiza a análise de dados públicos de focos de queimadas do INPE para identificar os municípios do bioma Amazônia com a maior incidência de queimadas. Utilizando Python e a biblioteca GeoPandas, o projeto realiza um processo completo de ETL (Extração, Transformação e Carga) e análise espacial.
+O script automatiza a análise de dados públicos de focos de queimadas do INPE para identificar os municípios do bioma Amazônico com a maior incidência de queimadas. Utilizando Python e a biblioteca GeoPandas, o projeto realiza um processo completo de ETL (Extração, Transformação e Carga) e análise espacial.
 
 ---
 
