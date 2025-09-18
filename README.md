@@ -13,7 +13,7 @@ O script automatiza a análise de dados públicos de focos de queimadas do INPE 
 
 ## 🗺️ Resultado Final
 
-!![Mapa de Queimadas Gerado](img/imagem_mapaffocoQGIS.png)
+![Mapa de Queimadas Gerado](img/imagem_mapaffocoQGIS.png)
 
 *O mapa acima demonstra a concentração de focos de queimada para o mês de agosto de 2025, destacando em vermelho os municípios com maior incidência na região amazônica.*
 
