@@ -1,12 +1,7 @@
-# Autor: Carlos Augusto Belo da Silva Filho
-# Descrição: Script para analisar focos de queimada na Amazônia e gerar um mapa de totais por município.
-
 import pandas as pd
 import geopandas as gpd
 
 print("Iniciando o script...")
-
-# Carrega dados
 print("Carregando arquivos...")
 
 fp_municipios = "dados_originais/BR_Municipios_2022.shp"
@@ -21,8 +16,6 @@ df_focos = pd.read_csv(fp_focos)
 #print(gdf_biomas.columns) - depurar
 
 print("Arquivos carregados com sucesso.")
-
-# Prepara os dados 
 print("\nPreparando os dados...")
 gdf_focos = gpd.GeoDataFrame(
     df_focos,
@@ -33,7 +26,6 @@ gdf_focos = gdf_focos.to_crs(gdf_municipios.crs)
 gdf_biomas = gdf_biomas.to_crs(gdf_municipios.crs)
 gdf_amazonia = gdf_biomas[gdf_biomas['Bioma'] == 'Amazônia']
 
-# Executa a análise espacial
 print("\nIniciando análise espacial...")
 focos_na_amazonia = gpd.sjoin(gdf_focos, gdf_amazonia, how="inner", predicate="intersects")
 focos_na_amazonia = focos_na_amazonia.drop(columns='index_right')
@@ -42,22 +34,15 @@ contagem_focos = focos_com_municipio.groupby('NM_MUN').size().reset_index(name='
 print("Análise concluída. Top 5 municípios:")
 print(contagem_focos.sort_values(by='t_focos', ascending=False).head())
 
-# Exporta os resultado
 print("\nExportando o resultado...")
 municipios_com_focos = gdf_municipios.merge(contagem_focos, on='NM_MUN', how='left')
 municipios_com_focos['t_focos'] = municipios_com_focos['t_focos'].fillna(0)
-
-# Converte para numeros inteiros
 municipios_com_focos['t_focos'] = municipios_com_focos['t_focos'].astype(int)
 
 # Filtra apenas os municípios que tiveram focos e ordena do maior para o menor
 resultado_csv = municipios_com_focos[municipios_com_focos['t_focos'] > 0].sort_values(by='t_focos', ascending=False)
-# Salva o resultado em um novo arquivo CSV na pasta de processados
-# resultado_csv.to_csv('dados_processados/resultado_contagem_focos.csv', index=False)
 resultado_csv.to_csv('dados_processados/resultado_contagem_focos.csv', index=False, sep=';', encoding='utf-8-sig')
-# Salva o resultado
 fp_saida = "dados_processados/municipios_amazonia_focos.shp"
 municipios_com_focos.to_file(fp_saida, driver='ESRI Shapefile', encoding='utf-8')
-
 
 print(f"\nConcluido! O resultado foi salvo em: {fp_saida}")
